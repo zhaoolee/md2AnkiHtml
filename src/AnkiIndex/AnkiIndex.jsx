@@ -5,7 +5,7 @@ import { Input } from 'antd';
 const { TextArea } = Input;
 import { Tabs } from 'antd';
 const TabPane = Tabs.TabPane;
-import './green.css';
+import green from './green.css';
 import './githubTheme.css';
 
 
@@ -46,6 +46,9 @@ class AnkiIndex extends React.Component{
 
   componentDidMount(){
 
+    console.log("===>>", green);
+    
+
     
   }
 
@@ -68,7 +71,7 @@ class AnkiIndex extends React.Component{
         <div style={{flex: "10 1 auto"}}>
           <Tabs defaultActiveKey="1" onChange={this.state.tabCallback}>
             <TabPane tab="绿色主题" key="1">
-            <Input value={this.state.html_text}></Input>
+            <Input value={this.state.html_text} id="green"></Input>
             <div className="green-md" dangerouslySetInnerHTML={{__html:this.state.html_text}}></div></TabPane>
             <TabPane tab="黑白主题" key="2">
             <div className="github-theme" dangerouslySetInnerHTML={{__html:this.state.html_text}}></div></TabPane>

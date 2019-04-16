@@ -24,6 +24,10 @@ class Index extends React.Component {
             <HashRouter> 
                 <div>
                     {/* 首页 */}
+                    <Route exact strict path="/" key="/" component = {
+                      () => <AnkiIndex 
+                      lang="cn" 
+                      />}/>
                     <Route exact strict path="/cn/index" key="/cn/index" component = {
                       () => <AnkiIndex 
                       lang="cn" 
