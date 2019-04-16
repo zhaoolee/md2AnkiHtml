@@ -32,10 +32,12 @@
   },
   "dependencies": {
     "animate.css": "^3.7.0",
+    "antd": "^3.16.3",
     "antd-mobile": "^2.2.11",
     "rc-queue-anim": "^1.6.12",
     "react-router-dom": "^4.3.1",
     "react-svg": "^8.0.0",
-    "react-transition-group": "^2.7.0"
+    "react-transition-group": "^2.7.0",
+    "showdown": "^1.9.0"
   }
 }
