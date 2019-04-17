@@ -1,30 +1,16 @@
 import React ,{Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import "antd/dist/antd.css";
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 const { TextArea } = Input;
 import { Tabs } from 'antd';
 const TabPane = Tabs.TabPane;
+import copy from 'copy-to-clipboard';
+
+const Search = Input.Search;
 
 
-class ThemeBlackWhite extends React.Component{
-
-
-  constructor(props){
-    super(props);
-    this.state={
-
-    }
-
-  }
-
-  componentDidMount(){
-    console.log("黑白主题");
-  }
-
-
-  render(){
-    let theme_black_white_style = `
+let theme_green_style = `
 <style>
 
   .theme-black_white{
@@ -191,10 +177,57 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 </style>
     `;
 
+class ThemeBlackWhite extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state={
+      html_style:""
+    }
+
+
+    this.writeToClipboard = this.writeToClipboard.bind(this);
+    this.updateHtmlStyle = this.updateHtmlStyle.bind(this);
+
+  }
+  writeToClipboard(){
+    copy(this.state.html_style);
+  }
+
+  async componentWillReceiveProps(nextProps){
+    console.log("nextprops::", nextProps);
+    await this.setState({
+      html_text: nextProps.html_text
+    })
+    await this.updateHtmlStyle();
+  }
+
+
+  async updateHtmlStyle(){
+    let html_style = html_style =this.state.html_text+theme_green_style 
+    await this.setState({
+      html_style 
+    })
+  }
+
+  async componentDidMount(){
+    let html_style = html_style =this.props.html_text+theme_green_style 
+    await this.setState({
+      html_style 
+    })
+  }
+
+
+
+
+
+  render(){
+
     return(
       <div id="theme-black_white">
-        <Input value={this.props.html_text+theme_black_white_style} id="my-html"></Input>
-        <div className="black_white" dangerouslySetInnerHTML={{__html:this.props.html_text+theme_black_white_style}}></div>
+        <Button type="primary" onClick={this.writeToClipboard} style={{position: "fixed", right: 0, top: 0}}>复制Html</Button>
+        <Input value={this.state.html_style} id="my-html"></Input>
+        <div className="black_white" dangerouslySetInnerHTML={{__html:this.state.html_style}}></div>
       </div>
     )
 

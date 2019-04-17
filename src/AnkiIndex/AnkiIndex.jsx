@@ -14,6 +14,7 @@ import showdown from 'showdown';
 class AnkiIndex extends React.Component{
   constructor(props){
     super(props);
+    this.inputRef = React.createRef();
     this.state={
       md_text: "",
       html_text: "",
@@ -22,7 +23,6 @@ class AnkiIndex extends React.Component{
 
     this.handleMdText = this.handleMdText.bind(this);
     this.tabCallback = this.tabCallback.bind(this);
-    this.writeToClipboard = this.writeToClipboard.bind(this);
   }
 
   handleMdText(e){
@@ -47,22 +47,11 @@ class AnkiIndex extends React.Component{
     console.log(key);
   }
 
-  writeToClipboard(){
-    console.log("js");
-    var htmlContent=document.getElementById("my-html");
-    htmlContent.value= document.getElementById("my-html").value;
-    htmlContent.select();                    //选择对象  
-    document.execCommand("Copy");       //执行浏览器复制命令
-    alert("已复制好，可贴粘。");
-  }
 
 
 
   componentDidMount(){
-
-    
-
-    
+    this.inputRef.current.focus();
   }
 
 
@@ -74,7 +63,6 @@ class AnkiIndex extends React.Component{
           Markdown转换Anki可用的Html
         </div>
 
-        <Button type="primary" onClick={this.writeToClipboard} style={{position: "fixed", right: 0, top: 0}}>复制Html</Button>
       </div>
           <Tabs defaultActiveKey="theme-green" onChange={this.tabCallback} style={{width: "100%"}}>
             <TabPane tab="绿色主题" key="theme-green">
@@ -91,7 +79,7 @@ class AnkiIndex extends React.Component{
           </Tabs>
           <div style={{height: "300px"}}></div>
           <hr style={{border: "1px solid #00968A"}}/>
-          <TextArea rows={10} placeholder="请在这里输入markdown语法的内容" value={this.state.md_text} onChange={this.handleMdText} style={{width: "100%", position: "fixed",width: "100%", bottom: "0", height: 300}}/>
+          <TextArea rows={10} ref={this.inputRef}  placeholder="请在这里输入markdown语法的内容" value={this.state.md_text} onChange={this.handleMdText} style={{width: "100%", position: "fixed",width: "100%", bottom: "0", height: 300}}/>
 
     </div>)
   }
