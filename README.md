@@ -3,7 +3,7 @@
 
 ## 用Markdown写Anki卡牌的小工具
 
-工具在线地址: [https://zhaoolee.github.io/md2AnkiHtml/dist/#/](https://zhaoolee.github.io/md2AnkiHtml/dist/#/)
+工具在线地址: [https://zhaoolee.github.io/md2AnkiHtml/v2.0/#/](https://zhaoolee.github.io/md2AnkiHtml/v2.0/#/)
 
 #### V1.0 已完成
 
