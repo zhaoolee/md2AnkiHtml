@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <title>Markdown转换为Anki可用的Html</title>
+  <script>
+    // 获取设备像素比(dpr -> devicePixelRatio)
+    var dpr = window.devicePixelRatio;
+    // 动态设置设备缩放比
+    var metaTag=document.createElement('meta');
+    metaTag.name = "viewport"
+    metaTag.setAttribute('content', 'initial-scale=' + 1/dpr + ', maximum-scale=' + 1/dpr + ', minimum-scale=' + 1/dpr + ', user-scalable=no');
+    document.getElementsByTagName('head')[0].appendChild(metaTag);
+  </script>
+
+  <style>
+    body{
+      background-color: #FCF6E6; 
+    }
+  </style>
+
+<script>
+    // 动态设置html的字体大小(页面宽度为1rem)
+    document.addEventListener('DOMContentLoaded', function(e) {
+        document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth + 'px';
+    }, false);
+</script>
+<link rel="shortcut icon" href="favicon.ico"></head>
+<body>
+	<div id="root"></div>
+<script type="text/javascript" src="main.js"></script></body>
+</html>
